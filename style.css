@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.top-row .box {
+    flex: 1;
+    height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.bottom-row .box {
+    flex: 1;
+    height: 120px;
+}
+
+.sub-box {
+    width: 80%;
+    height: 40px;
+}
