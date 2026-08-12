@@ -85,7 +85,6 @@ html, body {
 
 #stone img:hover {
     transform: scale(1.1);
-    cursor: url('img/wooden_pickaxe.jpg'), pointer !important;
 }
 
 .imgbtn img {
@@ -118,6 +117,27 @@ html, body {
     border: 3px solid #00a2ff;
     color: #00a2ff;
     transition: .3s;
+}
+
+#reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+
+    width: 60%;
+    height: 3em;
+    border-radius: 5px;
+    background-color: #ffffff00;
+    border: 3px solid #00a2ff;
+    color: #00a2ff;
+    transition: .3s;
+}
+
+#reset:hover {
+    background-color: #00a2ff;
+    color: #ffe;
 }
 
 .exchange:hover {
