@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+    background-color: #ffe;
 }
 
 .container {
@@ -28,11 +29,98 @@ html, body {
     box-sizing: border-box;
 }
 
-.bottom-row .box {
+.bottom-row > .box {
+    padding: 20px;
+    display: block;
     flex: 1;
+}
+
+.bottom-row .box div div div, .bottom-row .box div div {
+    font-size : 1.2em;
 }
 
 .sub-box {
     width: 80%;
     flex: 0 0 30%;
+}
+
+.imgbtn {
+    display: flex;
+    align-items: center;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    font-size: 2em;
+    transition: .3s;
+    border: none;
+}
+
+#mystery-ore {
+    border: 3px solid #00a2ff;
+    background-color: #ffffff00;
+    color: #00a2ff;
+    border-radius: 5px;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000000;
+    margin: 5px;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+#mystery-ore:hover {
+    background-color: #00a2ff;
+    color: #ffe;
+}
+
+#stone img{
+    width: 90%;
+    transition: .3s;
+}
+
+#stone img:hover {
+    transform: scale(1.1);
+    cursor: url('img/wooden_pickaxe.jpg'), pointer !important;
+}
+
+.imgbtn img {
+    display: block;
+}
+
+.item > span {
+    margin-left: 10px;
+}
+
+#inventory {
+    display: flex;
+}
+
+.row1, .row2 {
+    width: 90%;
+}
+
+.exchange {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 1em;
+
+    width: 100%;
+    height: 2.4em;
+    border-radius: 5px;
+    background-color: #ffffff00;
+    border: 3px solid #00a2ff;
+    color: #00a2ff;
+    transition: .3s;
+}
+
+.exchange:hover {
+    background-color: #00a2ff;
+    color: #ffe;
 }

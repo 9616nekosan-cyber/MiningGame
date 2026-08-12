@@ -8,18 +8,126 @@
     </head>
     <body>
         <div class="container">
-            <div class="top-row row">
-                <div class="mystery-ore box"></div>
-                <div class="stone box"></div>
-                <div class="Top-right-space box">
-                    <div class="resource sub-box"></div>
-                    <div class="prestage sub-box"></div>
+            <div class="top-row row" style="border: 2px solid #000">
+                <div class="box">
+                    <div id="inventory" class="sub-box">
+                        <div class="row1">
+                            <div class="item">
+                                <img src="img/cobblestone.jpg" width="35">: 
+                                <span id="cobblestone-count"></span>個
+                            </div>
+
+                            <div class="item">
+                                <img src="img/coal.jpg" width="35">: 
+                                <span id="coal-count"></span>個
+                            </div>
+
+                            <div class="item">
+                                <img src="img/iron_ingot.jpg" width="35">: 
+                                <span id="iron-ingot-count"></span>個
+                            </div>
+                        </div>
+
+                        <div class="row2">
+                            <div class="item">
+                                <img src="img/gold_ingot.jpg"width="35">: 
+                                <span id="gold-ingot-count"></span>個
+                            </div>
+
+                            <div class="item">
+                                <img src="img/diamond.jpg" width="35">: 
+                                <span id="diamond-count"></span>個
+                            </div>
+
+                            <div class="item">
+                                <img src="img/emerald.jpg" width="35">: 
+                                <span id="emerald-count"></span>個
+                            </div>
+
+                            <div class="item">
+                                <img src="img/mystery_ore.png"width="35">: 
+                                <span id="mystery-ore-count"></span>個
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sub-box" style="display: flex; justify-content: center; align-items: center;">
+                        <button id="mystery-ore" class="imgbtn">
+                            <img src="img/mystery_ore.png" alt="謎の鉱石">つかう
+                        </button>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div style="display: flex;">
+                        <div class="item">
+                            <img id="pickaxe" src="img/wooden_pickaxe.jpg" width="80">
+                        </div>
+
+                        <div class="item">
+                                <img src="img/iron_spear.jpg"width="80">: 
+                                <span id="drill-count"></span>個
+                        </div>
+                    </div>
+                    <button id="stone" class="imgbtn">
+                        <img src="img/stone.jpg">
+                    </button>
+                </div>
+
+                <div class="box">
+                    
                 </div>
             </div>
 
             <div class="bottom-row row">
-                <div class="exchange box"></div>
-                <div class="shop box"></div>
+                <div class="box" style="border: 2px solid #000000;">
+                    <h1>換金</h1>
+                    <div style="display: flex;">
+                        <div>
+                            <div>
+                                <img src="img/cobblestone.jpg" width="80" height="80"> ⇒ <img src="img/emerald.jpg" width="80" height="80">1
+                                <button id="exchange-cobblestone" class="exchange">換金</button>
+                            </div>
+
+                            <div>
+                                <img src="img/gold_ingot.jpg" width="80" height="80"> ⇒ <img src="img/emerald.jpg" width="80" height="80">256
+                                <button id="exchange-gold" class="exchange">換金</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <img src="img/coal.jpg" width="80" height="80"> ⇒ <img src="img/emerald.jpg" width="80" height="80">8
+                                <button id="exchange-coal" class="exchange">換金</button>
+                            </div>
+
+                            <div>
+                                <img src="img/diamond.jpg" width="80" height="80"> ⇒ <img src="img/emerald.jpg" width="80" height="80">1024
+                                <button id="exchange-diamond" class="exchange">換金</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <img src="img/iron_ingot.jpg" width="80" height="80"> ⇒ <img src="img/emerald.jpg" width="80" height="80">32
+                                <button id="exchange-iron" class="exchange">換金</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" style="border: 2px solid #000000; width: 100%; padding: 15px;">
+                    <h1>ショップ</h1>
+                    <div style="display: flex">
+                        <div>
+                            <img src="img/emerald.jpg" width="80" height="80">32 ⇒ <img src="img/stone_pickaxe.jpg" width="80" height="80">
+                            <button id="buy-stone-pickaxe" class="exchange" style="height:3em">アップグレード</button>
+                        </div>
+
+                        <div>
+                            <img src="img/emerald.jpg" width="80" height="80">16384 ⇒ <img src="img/iron_spear.jpg" width="80" height="80">
+                            <button id="buy-iron-spear" class="exchange" style="height:3em">購入</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="variable.js"></script>
