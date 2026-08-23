@@ -145,3 +145,34 @@ html, body {
     background-color: #00a2ff;
     color: #ffe;
 }
+
+.text-effect {
+    display: inline-flex;
+    position: absolute;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    font-size: 1em;
+    color: #00a2ff;
+    pointer-events: none;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+    animation: floatUp 0.8s ease-out forwards;
+}
+
+.text-effect img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+@keyframes flortUp {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(-30px);
+    }
+}
