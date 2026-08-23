@@ -78,6 +78,10 @@ html, body {
     color: #ffe;
 }
 
+#stone {
+    position: relative;
+}
+
 #stone img{
     width: 90%;
     transition: .3s;
@@ -161,16 +165,21 @@ html, body {
 }
 
 .text-effect img {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
 }
 
-@keyframes flortUp {
+@keyframes floatUp {
     0% {
         opacity: 1;
         transform: translate(-50%, -50%) translateY(0);
     }
+
+    50% {
+        opacity: 1;
+    }
+
     100% {
         opacity: 0;
         transform: translate(-50%, -50%) translateY(-30px);
