@@ -81,6 +81,7 @@ html, body {
 #stone img{
     width: 90%;
     transition: .3s;
+    cursor: url('img/wooden_pickaxe.jpg'), auto;
 }
 
 #stone img:hover {
