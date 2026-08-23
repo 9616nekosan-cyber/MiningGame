@@ -8,6 +8,12 @@ const diamondcountElm = document.getElementById('diamond-count');
 const emeraldcountElm = document.getElementById('emerald-count');
 const mysteryorecountElm = document.getElementById('mystery-ore-count');
 
+const exchStoneElm = document.getElementById('exchange-cobblestone');
+const exchCoalElm = document.getElementById('exchange-coal');
+const exchIronElm = document.getElementById('exchange-iron');
+const exchGoldElm = document.getElementById('exchange-gold');
+const exchDiaElm = document.getElementById('exchange-diamond');
+
 let have = {
     stone: 0,
     coal: 0,
@@ -16,6 +22,14 @@ let have = {
     diamond: 0,
     emerald: 0,
     mysteryore: 0
+}
+
+let rate = {
+    stone: 1,
+    coal: 8,
+    iron: 32,
+    gold: 256,
+    diamond: 1024
 }
 
 let pickaxe = 0;

@@ -95,6 +95,12 @@ stoneElm.addEventListener('click', (e) => {
     }
 });
 
+exchStoneElm.addEventListener('click', () => {exchange('stone')});
+exchCoalElm.addEventListener('click', () => {exchange('coal')});
+exchIronElm.addEventListener('click', () => {exchange('iron')});
+exchGoldElm.addEventListener('click', () => {exchange('gold')});
+exchDiaElm.addEventListener('click', () => {exchange('diamond')});
+
 setInterval(() => {
     stonecountElm.textContent = have['stone'];
     coalcountElm.textContent = have['coal'];
@@ -133,4 +139,9 @@ function add(x, y, type, n) {
     effect.addEventListener('animationend', () => {
         effect.remove();
     })
+}
+
+function exchange(kind) {
+    have['emerald'] += have[kind]*rate[kind];
+    have[kind] = 0;
 }
