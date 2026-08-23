@@ -4,7 +4,7 @@ stoneElm.addEventListener('click', (e) => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    switch (pickaxe) {
+    switch (pickaxelvl) {
         case 0:
             if (random < 0.10) {
                 add(x, y, 'coal', 1)
@@ -101,6 +101,17 @@ exchIronElm.addEventListener('click', () => {exchange('iron')});
 exchGoldElm.addEventListener('click', () => {exchange('gold')});
 exchDiaElm.addEventListener('click', () => {exchange('diamond')});
 
+upgradePickaxeElm.addEventListener('click', () => {
+    console.log('a')
+    if (pickaxeCost[pickaxelvl + 1] > have['emerald']) return console.log(pickaxeCost[pickaxelvl + 1] +'>'+ have['emerald']);
+    if (window.confirm(`${pickaxes[pickaxelvl + 1]} にアップグレードしますか？`)) {
+        pickaxelvl++;
+        have['emerald'] -= pickaxeCost[pickaxelvl];
+    } else {
+        return;
+    }
+})
+
 setInterval(() => {
     stonecountElm.textContent = have['stone'];
     coalcountElm.textContent = have['coal'];
@@ -109,6 +120,16 @@ setInterval(() => {
     diamondcountElm.textContent = have['diamond'];
     emeraldcountElm.textContent = have['emerald'];
     mysteryorecountElm.textContent = have['mysteryore'];
+    document.getElementById('pickaxe').src = pickaxeImg[pickaxelvl];
+    stoneElm.style.cursor = `url(${pickaxeImg[pickaxelvl]}), auto`;
+    document.getElementById('drill-count').textContent = drillC;
+    if (pickaxelvl >= 3) {
+        document.getElementById('pickaxe-shop').style.display = 'none';
+    } else {
+        document.getElementById('pickaxe-price').textContent = pickaxeCost[pickaxelvl + 1];
+        document.getElementById('pickaxe-shop-img').src = pickaxeImg[pickaxelvl + 1];
+    }
+       
 }, 10);
 
 function add(x, y, type, n) {

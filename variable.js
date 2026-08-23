@@ -14,6 +14,9 @@ const exchIronElm = document.getElementById('exchange-iron');
 const exchGoldElm = document.getElementById('exchange-gold');
 const exchDiaElm = document.getElementById('exchange-diamond');
 
+const upgradePickaxeElm = document.getElementById('upgrade-pickaxe');
+const buyDrillElm = document.getElementById('buy-drill');
+
 let have = {
     stone: 0,
     coal: 0,
@@ -32,10 +35,14 @@ let rate = {
     diamond: 1024
 }
 
-let pickaxe = 0;
-/*
-0:wooden pickaxe
-1:stone pickaxe
-2:iron pickaxe
-3:diamond pickaxe
-*/
+let pickaxelvl = 0;
+let pickaxes = [
+    '木のつるはし',
+    '石のつるはし',
+    '鉄のつるはし',
+    'ダイヤモンドのつるはし'
+]
+let pickaxeCost = [0, 64, 512, 4096]
+let pickaxeImg = ['img/wooden_pickaxe.jpg', 'img/stone_pickaxe.jpg', 'img/iron_pickaxe.jpg', 'img/diamond_pickaxe.jpg',]
+
+let drillC = 0;
