@@ -64,7 +64,7 @@ stoneElm.addEventListener('click', (e) => {
         case 3:
             switch (true) {
                 case random < 0.02:
-                    have[mysteryore]++;
+                    add(x, y, 'mysteryore', 1);
                 break;
 
                 case random < 0.15:
@@ -113,10 +113,15 @@ function add(x, y, type, n) {
     if (type == 'iron' || type == 'gold') imgId = type + '_ingot';
     if (type == 'stone') imgId = 'cobble' + type;
     const img = document.createElement('img');
-    img.src = `img/${imgId}.jpg`
+    if (type == 'mysteryore') {
+        img.src = 'img/mystery_ore.png';
+    } else {
+        img.src = `img/${imgId}.jpg`;
+    }
     effect.appendChild(img)
 
     const textNode = document.createTextNode('+' + n);
+    if (type == 'mysteryore') effect.style.color = 'red';
     effect.appendChild(textNode);
 
     effect.style.left = `${x}px`;
