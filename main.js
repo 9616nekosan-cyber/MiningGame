@@ -235,9 +235,9 @@ function add(x, y, type, n, from) {
         if (type == 'stone') imgId = 'cobble' + type;
         const img = document.createElement('img');
         if (type == 'mysteryore') {
-            img.src = 'img/mystery_ore.png';
+            img.src = './img/mystery_ore.png';
         } else {
-            img.src = `img/${imgId}.jpg`;
+            img.src = `./img/${imgId}.jpg`;
         }
         effect.appendChild(img)
 
