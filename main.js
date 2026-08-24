@@ -102,14 +102,20 @@ exchGoldElm.addEventListener('click', () => {exchange('gold')});
 exchDiaElm.addEventListener('click', () => {exchange('diamond')});
 
 upgradePickaxeElm.addEventListener('click', () => {
-    console.log('a')
-    if (pickaxeCost[pickaxelvl + 1] > have['emerald']) return console.log(pickaxeCost[pickaxelvl + 1] +'>'+ have['emerald']);
+    if (pickaxeCost[pickaxelvl + 1] > have['emerald']) return;
     if (window.confirm(`${pickaxes[pickaxelvl + 1]} にアップグレードしますか？`)) {
         pickaxelvl++;
         have['emerald'] -= pickaxeCost[pickaxelvl];
     } else {
         return;
     }
+})
+
+buyDrillElm.addEventListener('click', () => {
+    if (drillCost > have['emerald']) return;
+    drillCount++;
+    have['emerald'] -= drillCost;
+    drillCost = Math.floor(drillCost*1.2);
 })
 
 setInterval(() => {
@@ -122,7 +128,8 @@ setInterval(() => {
     mysteryorecountElm.textContent = have['mysteryore'];
     document.getElementById('pickaxe').src = pickaxeImg[pickaxelvl];
     stoneElm.style.cursor = `url(${pickaxeImg[pickaxelvl]}), auto`;
-    document.getElementById('drill-count').textContent = drillC;
+    document.getElementById('drill-count').textContent = drillCount;
+    document.getElementById('drill-price').textContent = drillCost;
     if (pickaxelvl >= 3) {
         document.getElementById('pickaxe-shop').style.display = 'none';
     } else {

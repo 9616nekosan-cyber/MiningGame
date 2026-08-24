@@ -42,7 +42,8 @@ let pickaxes = [
     '鉄のつるはし',
     'ダイヤモンドのつるはし'
 ]
-let pickaxeCost = [0, 64, 2048, 16384]
+let pickaxeCost = [0, 64, 1024, 16384]
 let pickaxeImg = ['img/wooden_pickaxe.jpg', 'img/stone_pickaxe.jpg', 'img/iron_pickaxe.jpg', 'img/diamond_pickaxe.jpg',]
 
-let drillC = 0;
+let drillCount = 0;
+let drillCost = 256;
