@@ -352,3 +352,28 @@ function saveData() {
 
 setInterval(saveData, 10000);
 window.addEventListener('beforeunload', saveData);
+
+function resetData() {
+    mysteryoreMax = 3;
+    pickaxelvl = 0;
+    drillCount = 0;
+    drillCost = 256;
+
+    have = {
+        stone: 0,
+        coal: 0,
+        iron: 0,
+        gold: 0,
+        diamond: 0,
+        emerald: 0,
+        mysteryore: 0
+    }
+
+    rate = {
+        stone: 1,
+        coal: 8,
+        iron: 32,
+        gold: 256,
+        diamond: 1024    
+    }
+}
