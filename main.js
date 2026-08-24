@@ -274,18 +274,42 @@ function setDrillTimer(newtimer) {
     }, timer);
 }
 
-function buff(s) {
+function buff() {
+    let s;
     const random = Math.floor(Math.random()*3);
     switch (random) {
         case 0:
             clickMag = 7;
+            s = 77;
         break;
 
         case 1:
-            return have['emerald'] = have['emerald']*Math.floor(Math.random()*20)/10+1;
-        break;
+        return have['emerald'] = have['emerald']*Math.floor(Math.random()*20)/10+1;
 
         case 2:
+            drillMag = 7;
+            s = 77;
+        break;
 
+        case 3:
+            rate[stone] = 5;
+            rate[coal] = 40;
+            rate[iron] = 128;
+            rate[gold] = 1024;
+            rate[diamond] = 4096;
+            s = 180;
+        break;
     }
+
+    setTimeout(() => {
+        clickMag = 1;
+        drillMag = 1;
+        rate = {
+            stone: 1,
+            coal: 8,
+            iron: 32,
+            gold: 256,
+            diamond: 1024
+        }
+    }, s*1000)
 }
