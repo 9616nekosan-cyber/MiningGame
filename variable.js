@@ -26,7 +26,7 @@ let pickaxes = [
     'ダイヤモンドのつるはし'
 ]
 let pickaxeCost = [0, 64, 1024, 8192];
-let pickaxeImg = ['img/wooden_pickaxe.jpg', 'img/stone_pickaxe.jpg', 'img/iron_pickaxe.jpg', 'img/diamond_pickaxe.jpg',]
+let pickaxeImg = ['./img/wooden_pickaxe.jpg', './img/stone_pickaxe.jpg', './img/iron_pickaxe.jpg', './img/diamond_pickaxe.jpg',]
 
 let clickMag = 1;
 let drillMag = 1;
