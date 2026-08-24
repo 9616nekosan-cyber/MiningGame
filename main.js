@@ -29,9 +29,14 @@ buyDrillElm.addEventListener('click', () => {
     drillCost = Math.floor(drillCost*1.2);
 })
 
-useMysteryoreElm.addEventListener('click', () => {
-    if (have[mysteryore] <= 0) return;
+useMysteryoreElm.addEventListener('click', (e) => {
+    if (have['mysteryore'] <= 0) return;
     have['mysteryore']--;
+    
+    const rect = useMysteryoreElm.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    buff(x, y)
 })
 
 setInterval(() => {
@@ -112,11 +117,12 @@ setInterval(() => {
         useMysteryoreElm.style.backgroundColor = '';
         useMysteryoreElm.style.cursor = '';
     }
+    have['emerald'] = Math.round(have['emerald']);
 
-    if (!drillCount <= 0) setDrillTimer(4000 / drillCount);
+    if (!drillCount <= 0) setDrillTimer(1000 / drillCount);
 }, 10);
 
-function dig(argx,argy,level) {
+function dig(argx,argy,level,from) {
     let x;
     let y;
 
@@ -127,27 +133,27 @@ function dig(argx,argy,level) {
     switch (level) {
         case 0:
             if (random < 0.10) {
-                add(x, y, 'coal', 1)
+                add(x, y, 'coal', 1, from);
             } else {
-                add(x, y, 'stone', 1);
+                add(x, y, 'stone', 1, from);
             }
         break;
 
         case 1:
             switch (true) {
                 case random < 0.10:
-                    add(x, y, 'iron', 1);
+                    add(x, y, 'iron', 1, from);
                 break;
 
                 case random < 0.20:
-                    add(x, y, 'coal', 1)
+                    add(x, y, 'coal', 1, from)
                 break;
 
                 default:
                     if (Math.random() < 0.10) {
-                        add(x, y, 'stone', 2);
+                        add(x, y, 'stone', 2, from);
                     } else {
-                        add(x, y, 'stone', 1);
+                        add(x, y, 'stone', 1, from);
                     }
                 break;
             }
@@ -156,26 +162,26 @@ function dig(argx,argy,level) {
         case 2:
             switch (true) {
                 case random < 0.02:
-                    add(x, y, 'diamond', 1);
+                    add(x, y, 'diamond', 1, from);
                 break;
 
                 case random < 0.10:
-                    add(x, y, 'gold', 1);
+                    add(x, y, 'gold', 1, from);
                 break;
 
                 case random < 0.15:
-                    add(x, y, 'iron', 1);
+                    add(x, y, 'iron', 1, from);
                 break;
 
                 case random < 0.25:
-                    add(x, y, 'coal', 1)
+                    add(x, y, 'coal', 1, from)
                 break;
 
                 default:
                     if (Math.random() < 0.10) {
-                        add(x, y, 'stone', Math.floor(Math.random() * 3) + 1);
+                        add(x, y, 'stone', Math.floor(Math.random() * 3, from) + 1);
                     } else {
-                        add(x, y, 'stone', 1);
+                        add(x, y, 'stone', 1, from);
                     }
                 break;
             }
@@ -187,31 +193,31 @@ function dig(argx,argy,level) {
                     if (have['mysteryore'] >= 3) {
                         dig(argx, argy, level);
                     } else {
-                        add(x, y, 'mysteryore', 1);
+                        add(x, y, 'mysteryore', 1, from);
                     }
                 break;
 
                 case random < 0.15:
-                    add(x, y, 'diamond', 1);
+                    add(x, y, 'diamond', 1, from);
                 break;
 
                 case random < 0.25:
-                    add(x, y, 'gold', 1);
+                    add(x, y, 'gold', 1, from);
                 break;
 
                 case random < 0.30:
-                    add(x, y, 'iron', 1);
+                    add(x, y, 'iron', 1, from);
                 break;
 
                 case random < 0.40:
-                    add(x, y, 'coal', 1);
+                    add(x, y, 'coal', 1, from);
                 break;
 
                 default:
                     if (Math.random() < 0.10) {
                         add(x, y, 'stone', Math.floor(Math.random() * 3) + 4);
                     } else {
-                        add(x, y, 'stone', 2);
+                        add(x, y, 'stone', 2, from);
                     }
                 break;
             }
@@ -219,7 +225,7 @@ function dig(argx,argy,level) {
     }
 }
 
-function add(x, y, type, n) {
+function add(x, y, type, n, from) {
     if (x && y) {
         const effect = document.createElement('span');
         effect.classList.add('text-effect');
@@ -246,8 +252,8 @@ function add(x, y, type, n) {
             effect.remove();
         })
     }
-
-    have[type] += n;
+    
+    have[type] += from? n : n*clickMag;
 }
 
 function exchange(kind) {
@@ -270,28 +276,33 @@ function setDrillTimer(newtimer) {
     }
 
     timerID = setInterval(() => {
-        dig(null,null,pickaxelvl);
-    }, timer);
+        dig(null,null,pickaxelvl,'drill');
+    }, timer/drillMag);
 }
 
-function buff() {
+function buff(x, y) {
     let s;
     const random = Math.floor(Math.random()*3);
     switch (random) {
         case 0:
-            clickMag = 7;
+            clickMag = clickMag*7;
             s = 77;
+            texteffect(x, y, 'クリック7倍！');
         break;
 
-        case 1:
-        return have['emerald'] = have['emerald']*Math.floor(Math.random()*20)/10+1;
+        case 1: 
+            texteffect(x, y, 'エメラルドが増えた！');
+            return have['emerald'] = have['emerald']*((Math.random()*8+1)/10+1);
 
         case 2:
-            drillMag = 7;
+            if (drillCount <= 0) return buff(x, y)
+            texteffect(x, y, 'ドリルの効率7倍！');
+            drillMag = drillMag*7;
             s = 77;
         break;
 
         case 3:
+            texteffect(x, y, '換金がお得！');
             rate[stone] = 5;
             rate[coal] = 40;
             rate[iron] = 128;
@@ -302,8 +313,8 @@ function buff() {
     }
 
     setTimeout(() => {
-        clickMag = 1;
-        drillMag = 1;
+        if (clickMag > 1) {clickMag = clickMag/7;}
+        if (drillMag > 1) {drillMag = drillMag/7;}
         rate = {
             stone: 1,
             coal: 8,
@@ -311,5 +322,33 @@ function buff() {
             gold: 256,
             diamond: 1024
         }
+        console.log('効果が切れた');
     }, s*1000)
 }
+
+function texteffect(x, y, txt) {
+    const effect = document.createElement('span');
+    effect.classList.add('text-effect');
+    const textNode = document.createTextNode(txt);
+    effect.appendChild(textNode);
+    effect.style.color = 'red';
+    effect.style.left = `${x}px`;
+    effect.style.top = `${y}px`;
+    useMysteryoreElm.appendChild(effect);
+    effect.addEventListener('animationend', () => {
+        effect.remove();
+    })
+}
+
+function saveData() {
+    localStorage.setItem('mysteryoreMax', mysteryoreMax);
+    localStorage.setItem('pickaxelvl', pickaxelvl);
+    localStorage.setItem('drillCount', drillCount);
+    localStorage.setItem('drillCost', drillCost);
+    
+    localStorage.setItem('have', JSON.stringify(have));
+    localStorage.setItem('rate', JSON.stringify(rate));
+}
+
+setInterval(saveData, 10000);
+window.addEventListener('beforeunload', saveData);

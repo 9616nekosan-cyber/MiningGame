@@ -15,30 +15,10 @@ const exchGoldElm = document.getElementById('exchange-gold');
 const exchDiaElm = document.getElementById('exchange-diamond');
 
 const useMysteryoreElm = document.getElementById('mystery-ore');
-let mysteryoreMax = 3;
 
 const upgradePickaxeElm = document.getElementById('upgrade-pickaxe');
 const buyDrillElm = document.getElementById('buy-drill');
 
-let have = {
-    stone: 0,
-    coal: 0,
-    iron: 0,
-    gold: 0,
-    diamond: 0,
-    emerald: 0,
-    mysteryore: 0
-}
-
-let rate = {
-    stone: 1,
-    coal: 8,
-    iron: 32,
-    gold: 256,
-    diamond: 1024
-}
-
-let pickaxelvl = 0;
 let pickaxes = [
     '木のつるはし',
     '石のつるはし',
@@ -48,8 +28,30 @@ let pickaxes = [
 let pickaxeCost = [0, 64, 1024, 8192];
 let pickaxeImg = ['img/wooden_pickaxe.jpg', 'img/stone_pickaxe.jpg', 'img/iron_pickaxe.jpg', 'img/diamond_pickaxe.jpg',]
 
-let drillCount = 0;
-let drillCost = 256;
-
 let clickMag = 1;
 let drillMag = 1;
+
+
+let mysteryoreMax = localStorage.getItem('mysteryoreMax') ? parseInt(localStorage.getItem('mysteryoreMax')) : 3;
+let pickaxelvl = localStorage.getItem('pickaxelvl') ? parseInt(localStorage.getItem('pickaxelvl')) : 0;
+let drillCount = localStorage.getItem('drillCount') ? parseInt(localStorage.getItem('drillCount')) : 0;
+let drillCost = localStorage.getItem('drillCost') ? parseInt(localStorage.getItem('drillCost')) : 256;
+
+// オブジェクトの読み込み（JSON.parse を使う）
+let have = localStorage.getItem('have') ? JSON.parse(localStorage.getItem('have')) : {
+    stone: 0,
+    coal: 0,
+    iron: 0,
+    gold: 0,
+    diamond: 0,
+    emerald: 0,
+    mysteryore: 0
+};
+
+let rate = localStorage.getItem('rate') ? JSON.parse(localStorage.getItem('rate')) : {
+    stone: 1,
+    coal: 8,
+    iron: 32,
+    gold: 256,
+    diamond: 1024    
+};

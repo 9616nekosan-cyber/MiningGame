@@ -62,6 +62,7 @@ html, body {
     color: #00a2ff;
     border-radius: 5px;
     transition: .3s;
+    position: relative;
 }
 
 .item{
@@ -188,7 +189,7 @@ html, body {
 @keyframes floatUp {
     0% {
         opacity: 1;
-        transform: translate(-50%, -50%) translateY(0);
+        transform: translate(-50%, -50%) translateX(50px) translateY(0);
     }
 
     50% {
@@ -197,6 +198,6 @@ html, body {
 
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) translateY(-30px);
+        transform: translate(-50%, -50%) translateX(50px) translateY(-50px);
     }
 }
