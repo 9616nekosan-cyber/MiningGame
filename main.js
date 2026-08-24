@@ -47,6 +47,55 @@ setInterval(() => {
         document.getElementById('pickaxe-price').textContent = pickaxeCost[pickaxelvl + 1];
         document.getElementById('pickaxe-shop-img').src = pickaxeImg[pickaxelvl + 1];
     }
+
+    if (have['stone'] <= 0) {
+        exchStoneElm.classList.replace('exchange', 'cannot-exchange');
+    } else {
+        exchStoneElm.classList.replace('cannot-exchange', 'exchange');
+    }
+    if (have['coal'] <= 0) {
+        exchCoalElm.classList.replace('exchange', 'cannot-exchange');
+    } else {
+        exchCoalElm.classList.replace('cannot-exchange', 'exchange');
+    }
+    if (have['iron'] <= 0) {
+        exchIronElm.classList.replace('exchange', 'cannot-exchange');
+    } else {
+        exchIronElm.classList.replace('cannot-exchange', 'exchange');
+    }
+    if (have['gold'] <= 0) {
+        exchGoldElm.classList.replace('exchange', 'cannot-exchange');
+    } else {
+        exchGoldElm.classList.replace('cannot-exchange', 'exchange');
+    }
+    if (have['diamond'] <= 0) {
+        exchDiaElm.classList.replace('exchange', 'cannot-exchange');
+    } else {
+        exchDiaElm.classList.replace('cannot-exchange', 'exchange');
+    }
+    document.querySelectorAll('.exchange').forEach(e => e.textContent = 'すべて換金');
+    document.querySelectorAll('.cannot-exchange').forEach(e => e.textContent = '換金不可');
+
+    if (have['emerald'] < pickaxeCost[pickaxelvl + 1]) {
+        upgradePickaxeElm.classList.replace('upgrade', 'cannot-upgrade');
+    } else {
+        upgradePickaxeElm.classList.replace('cannot-upgrade', 'upgrade');
+    }
+    const canupg = document.querySelector('.upgrade');
+    if (canupg) canupg.textContent = 'アップグレード';
+    const cantupg = document.querySelector('.cannot-upgrade')
+    if (cantupg) cantupg.textContent = 'エメラルドが足りない！';
+
+    if (have['emerald'] < drillCost) {
+        buyDrillElm.classList.replace('buy', 'cannot-buy');
+    } else {
+        buyDrillElm.classList.replace('cannot-buy', 'buy');
+    }
+    const canbuy = document.querySelector('.buy');
+    if (canbuy) canbuy.textContent = '購入';
+    const cantbuy = document.querySelector('.cannot-buy')
+    if (cantbuy) cantbuy.textContent = 'エメラルドが足りない！';
+
     if (!drillCount <= 0) setDrillTimer(4000 / drillCount);
 }, 10);
 
