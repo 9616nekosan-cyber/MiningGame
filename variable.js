@@ -14,6 +14,9 @@ const exchIronElm = document.getElementById('exchange-iron');
 const exchGoldElm = document.getElementById('exchange-gold');
 const exchDiaElm = document.getElementById('exchange-diamond');
 
+const useMysteryoreElm = document.getElementById('mystery-ore');
+let mysteryoreMax = 3;
+
 const upgradePickaxeElm = document.getElementById('upgrade-pickaxe');
 const buyDrillElm = document.getElementById('buy-drill');
 
@@ -47,3 +50,6 @@ let pickaxeImg = ['img/wooden_pickaxe.jpg', 'img/stone_pickaxe.jpg', 'img/iron_p
 
 let drillCount = 0;
 let drillCost = 256;
+
+let clickMag = 1;
+let drillMag = 1;

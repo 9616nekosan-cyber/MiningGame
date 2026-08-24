@@ -29,6 +29,11 @@ buyDrillElm.addEventListener('click', () => {
     drillCost = Math.floor(drillCost*1.2);
 })
 
+useMysteryoreElm.addEventListener('click', () => {
+    if (have[mysteryore] <= 0) return;
+    have['mysteryore']--;
+})
+
 setInterval(() => {
     stonecountElm.textContent = have['stone'];
     coalcountElm.textContent = have['coal'];
@@ -36,7 +41,7 @@ setInterval(() => {
     goldcountElm.textContent = have['gold'];
     diamondcountElm.textContent = have['diamond'];
     emeraldcountElm.textContent = have['emerald'];
-    mysteryorecountElm.textContent = have['mysteryore'];
+    mysteryorecountElm.textContent = have['mysteryore'] >= mysteryoreMax ? `${have['mysteryore']}個(上限)` : `${have['mysteryore']}個`;
     document.getElementById('pickaxe').src = pickaxeImg[pickaxelvl];
     stoneElm.style.cursor = `url(${pickaxeImg[pickaxelvl]}), auto`;
     document.getElementById('drill-count').textContent = drillCount;
@@ -95,6 +100,18 @@ setInterval(() => {
     if (canbuy) canbuy.textContent = '購入';
     const cantbuy = document.querySelector('.cannot-buy')
     if (cantbuy) cantbuy.textContent = 'エメラルドが足りない！';
+
+    if (have['mysteryore'] <= 0) {
+        useMysteryoreElm.style.border = '3px solid #669';
+        useMysteryoreElm.style.color = '#669';
+        useMysteryoreElm.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+        useMysteryoreElm.style.cursor = 'default';
+    } else {
+        useMysteryoreElm.style.border = '';
+        useMysteryoreElm.style.color = '';
+        useMysteryoreElm.style.backgroundColor = '';
+        useMysteryoreElm.style.cursor = '';
+    }
 
     if (!drillCount <= 0) setDrillTimer(4000 / drillCount);
 }, 10);
@@ -167,7 +184,11 @@ function dig(argx,argy,level) {
         case 3:
             switch (true) {
                 case random < 0.02:
-                    add(x, y, 'mysteryore', 1);
+                    if (have['mysteryore'] >= 3) {
+                        dig(argx, argy, level);
+                    } else {
+                        add(x, y, 'mysteryore', 1);
+                    }
                 break;
 
                 case random < 0.15:
@@ -214,7 +235,7 @@ function add(x, y, type, n) {
         }
         effect.appendChild(img)
 
-        const textNode = document.createTextNode('+' + n);
+        const textNode = document.createTextNode('+' + n*clickMag);
         if (type == 'mysteryore') effect.style.color = 'red';
         effect.appendChild(textNode);
 
@@ -251,4 +272,20 @@ function setDrillTimer(newtimer) {
     timerID = setInterval(() => {
         dig(null,null,pickaxelvl);
     }, timer);
+}
+
+function buff(s) {
+    const random = Math.floor(Math.random()*3);
+    switch (random) {
+        case 0:
+            clickMag = 7;
+        break;
+
+        case 1:
+            return have['emerald'] = have['emerald']*Math.floor(Math.random()*20)/10+1;
+        break;
+
+        case 2:
+
+    }
 }
