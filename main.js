@@ -26,7 +26,7 @@ buyDrillElm.addEventListener('click', () => {
     if (drillCost > have['emerald']) return;
     drillCount++;
     have['emerald'] -= drillCost;
-    drillCost = Math.floor(drillCost*1.2);
+    drillCost = Math.floor(drillCost*1.1);
 })
 
 useMysteryoreElm.addEventListener('click', (e) => {
@@ -120,7 +120,7 @@ setInterval(() => {
     have['emerald'] = Math.round(have['emerald']);
 
     if (have['mysteryore'] >= mysteryoreMax) have['mysteryore'] = mysteryoreMax;
-    if (!drillCount <= 0) setDrillTimer(1000 / drillCount);
+    if (!drillCount <= 0) setDrillTimer(3000 / drillCount);
 }, 10);
 
 function dig(argx,argy,level,from) {
@@ -287,7 +287,7 @@ function buff(x, y) {
     switch (random) {
         case 0:
             clickMag = clickMag*7;
-            s = 77;
+            s = 17;
             texteffect(x, y, 'クリック7倍！');
         break;
 
@@ -299,7 +299,7 @@ function buff(x, y) {
             if (drillCount <= 0) return buff(x, y)
             texteffect(x, y, 'ドリルの効率7倍！');
             drillMag = drillMag*7;
-            s = 77;
+            s = 17;
         break;
 
         case 3:
@@ -351,7 +351,7 @@ function saveData() {
     localStorage.setItem('rate', JSON.stringify(rate));
 }
 
-setInterval(saveData, 10000);
+setInterval(saveData, 1000);
 window.addEventListener('beforeunload', saveData);
 
 function resetData() {
