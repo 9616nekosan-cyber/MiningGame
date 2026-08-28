@@ -93,7 +93,7 @@ setInterval(() => {
     }
     const canupg = document.querySelector('.upgrade');
     if (canupg) canupg.textContent = 'アップグレード';
-    const cantupg = document.querySelector('.cannot-upgrade')
+    const cantupg = document.querySelector('.cannot-upgrade');
     if (cantupg) cantupg.textContent = 'エメラルドが足りない！';
 
     if (have['emerald'] < drillCost) {
@@ -190,7 +190,7 @@ function dig(argx,argy,level,from) {
 
         case 3:
             switch (true) {
-                case random < 0.02:
+                case random < 0.20/generallvl:
                     if (have['mysteryore'] >= 3) {
                         dig(argx, argy, level);
                     } else {
@@ -278,6 +278,8 @@ function setDrillTimer(newtimer) {
 
     timerID = setInterval(() => {
         dig(null,null,pickaxelvl,'drill');
+        generallvl = Math.floor(generallvl*1.01*1000)/1000;
+        console.log(generallvl);
     }, timer/drillMag);
 }
 
@@ -342,6 +344,7 @@ function texteffect(x, y, txt) {
 }
 
 function saveData() {
+    localStorage.setItem('generallvl', generallvl);
     localStorage.setItem('mysteryoreMax', mysteryoreMax);
     localStorage.setItem('pickaxelvl', pickaxelvl);
     localStorage.setItem('drillCount', drillCount);
@@ -356,6 +359,7 @@ window.addEventListener('beforeunload', saveData);
 
 function resetData() {
     clearInterval(timerID);
+    generallvl = 1
     mysteryoreMax = 3;
     pickaxelvl = 0;
     drillCount = 0;

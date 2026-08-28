@@ -31,7 +31,7 @@ let pickaxeImg = ['./img/wooden_pickaxe.jpg', './img/stone_pickaxe.jpg', './img/
 let clickMag = 1;
 let drillMag = 1;
 
-
+let generallvl = localStorage.getItem('generallvl') ? parseInt(localStorage.getItem('generallvl')) : 1;
 let mysteryoreMax = localStorage.getItem('mysteryoreMax') ? parseInt(localStorage.getItem('mysteryoreMax')) : 3;
 let pickaxelvl = localStorage.getItem('pickaxelvl') ? parseInt(localStorage.getItem('pickaxelvl')) : 0;
 let drillCount = localStorage.getItem('drillCount') ? parseInt(localStorage.getItem('drillCount')) : 0;
