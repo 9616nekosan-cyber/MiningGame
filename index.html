@@ -6,6 +6,11 @@
         <title>採掘ゲーム</title>
         <link rel="icon" type="image/jpeg" href="./img/wooden_pickaxe.jpg">
         <link rel="stylesheet" href="style.css">
+        <script>
+            document.addEventListener('keydown', (e) => {
+                if(e.key === ' ') e.preventDefault();
+            })
+        </script>
     </head>
     <body>
         <div class="container">
