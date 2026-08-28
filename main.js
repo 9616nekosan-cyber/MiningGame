@@ -119,6 +119,7 @@ setInterval(() => {
     }
     have['emerald'] = Math.round(have['emerald']);
 
+    if (have['mysteryore'] >= mysteryoreMax) have['mysteryore'] = mysteryoreMax;
     if (!drillCount <= 0) setDrillTimer(1000 / drillCount);
 }, 10);
 
@@ -313,8 +314,8 @@ function buff(x, y) {
     }
 
     setTimeout(() => {
-        if (clickMag > 1) {clickMag = clickMag/7;}
-        if (drillMag > 1) {drillMag = drillMag/7;}
+        if (clickMag > 1) clickMag = clickMag/7;
+        if (drillMag > 1) drillMag = drillMag/7;
         rate = {
             stone: 1,
             coal: 8,
@@ -354,10 +355,13 @@ setInterval(saveData, 10000);
 window.addEventListener('beforeunload', saveData);
 
 function resetData() {
+    clearInterval(timerID);
     mysteryoreMax = 3;
     pickaxelvl = 0;
     drillCount = 0;
     drillCost = 256;
+    if (clickMag > 1) clickMag = clickMag/7;
+    if (drillMag > 1) drillMag = drillMag/7;
 
     have = {
         stone: 0,
