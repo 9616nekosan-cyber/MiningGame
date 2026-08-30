@@ -27,6 +27,7 @@ buyDrillElm.addEventListener('click', () => {
     drillCount++;
     have['emerald'] -= drillCost;
     drillCost = Math.floor(drillCost*1.1);
+    drillLoop();
 })
 
 useMysteryoreElm.addEventListener('click', (e) => {
@@ -264,9 +265,8 @@ function exchange(kind) {
 
 let timerID;
 function drillLoop() {
-    if (drillCount <= 0) return drillLoop();
     dig(null,null,pickaxelvl,'drill');
-    const interval = 3000 / drillCount;
+    const interval = 10000 / drillCount;
     timerID = setTimeout(drillLoop, interval);
 }
 
