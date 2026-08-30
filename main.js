@@ -266,6 +266,7 @@ function exchange(kind) {
 let timerID;
 function drillLoop() {
     if (!drillCount > 0) return; 
+    console.log('a');
     dig(null,null,pickaxelvl,'drill');
     const interval = 10000 / drillCount;
     timerID = setTimeout(drillLoop, interval);
