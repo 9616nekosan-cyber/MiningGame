@@ -377,3 +377,5 @@ function resetData() {
 
     drillLoop();
 }
+
+if (drillCount > 0) drillLoop();
