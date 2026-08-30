@@ -266,7 +266,6 @@ let timerID;
 let timer;
 function setDrillTimer(newtimer) {
     if (newtimer <= 0) return;
-    if (newtimer == timer) return;
 
     if (timerID) {
         clearInterval(timerID);
@@ -278,7 +277,7 @@ function setDrillTimer(newtimer) {
 
     timerID = setInterval(() => {
         dig(null,null,pickaxelvl,'drill');
-        generallvl = Math.floor(generallvl*1.001*1000)/1000;
+        generallvl = Math.floor(generallvl*1.0001*1000)/1000;
     }, timer/drillMag);
 }
 
