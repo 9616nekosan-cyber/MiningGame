@@ -265,7 +265,7 @@ function exchange(kind) {
 
 let timerID;
 function drillLoop() {
-    if (!drillCount > 0) return; 
+    if (!drillCount > 0) return console.log('abc');
     console.log('a');
     dig(null,null,pickaxelvl,'drill');
     const interval = 10000 / drillCount;
@@ -378,5 +378,3 @@ function resetData() {
 
     drillLoop();
 }
-
-drillLoop();
