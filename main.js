@@ -120,7 +120,6 @@ setInterval(() => {
     have['emerald'] = Math.round(have['emerald']);
 
     if (have['mysteryore'] >= mysteryoreMax) have['mysteryore'] = mysteryoreMax;
-    if (!drillCount <= 0) setDrillTimer(3000 / drillCount);
 }, 10);
 
 function dig(argx,argy,level,from) {
@@ -265,6 +264,7 @@ function exchange(kind) {
 
 let timerID;
 function drillLoop() {
+    if (drillCount <= 0) return drillLoop();
     dig(null,null,pickaxelvl,'drill');
     const interval = 3000 / drillCount;
     timerID = setTimeout(drillLoop, interval);
