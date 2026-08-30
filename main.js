@@ -194,7 +194,7 @@ function dig(argx,argy,level,from) {
                     if (have['mysteryore'] >= 3) {
                         dig(argx, argy, level);
                     } else {
-                        generallvl += 0.2;
+                        generallvl += 0.5;
                         add(x, y, 'mysteryore', 1, from);
                     }
                 break;
