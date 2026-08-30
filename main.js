@@ -279,7 +279,6 @@ function setDrillTimer(newtimer) {
     timerID = setInterval(() => {
         dig(null,null,pickaxelvl,'drill');
         generallvl = Math.floor(generallvl*1.01*1000)/1000;
-        console.log(generallvl);
     }, timer/drillMag);
 }
 
@@ -325,7 +324,6 @@ function buff(x, y) {
             gold: 256,
             diamond: 1024
         }
-        console.log('効果が切れた');
     }, s*1000)
 }
 
