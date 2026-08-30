@@ -278,7 +278,7 @@ function setDrillTimer(newtimer) {
 
     timerID = setInterval(() => {
         dig(null,null,pickaxelvl,'drill');
-        generallvl = Math.floor(generallvl*1.01*1000)/1000;
+        generallvl = Math.floor(generallvl*1.00001*1000)/1000;
     }, timer/drillMag);
 }
 
