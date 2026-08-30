@@ -255,7 +255,7 @@ function add(x, y, type, n, from) {
         })
     }
     
-    have[type] += from? n : n*clickMag;
+    have[type] += from === 'drill'? n*drillMag : n*clickMag;
 }
 
 function exchange(kind) {
@@ -264,22 +264,10 @@ function exchange(kind) {
 }
 
 let timerID;
-let timer;
-function setDrillTimer(newtimer) {
-    if (newtimer <= 0) return;
-    if (newtimer <= timer) return;
-
-    if (timerID) {
-        clearInterval(timerID);
-    }
-
-    if (newtimer) {
-        timer = newtimer;
-    }
-
-    timerID = setInterval(() => {
-        dig(null,null,pickaxelvl,'drill');
-    }, timer/drillMag);
+function drillLoop() {
+    dig(null,null,pickaxelvl,'drill');
+    const interval = 3000 / drillCount;
+    timerID = setTimeout(drillLoop, interval);
 }
 
 function buff(x, y) {
@@ -356,7 +344,10 @@ setInterval(saveData, 1000);
 window.addEventListener('beforeunload', saveData);
 
 function resetData() {
-    clearInterval(timerID);
+    if (timerID) {
+        clearInterval(timerID);
+        timerID = null;
+    }
     generallvl = 1
     mysteryoreMax = 3;
     pickaxelvl = 0;
@@ -382,4 +373,8 @@ function resetData() {
         gold: 256,
         diamond: 1024    
     }
+
+    drillLoop();
 }
+
+drillLoop();
