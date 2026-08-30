@@ -190,7 +190,7 @@ function dig(argx,argy,level,from) {
 
         case 3:
             switch (true) {
-                case random < 0.20/generallvl:
+                case random < 0.02/generallvl:
                     if (have['mysteryore'] >= 3) {
                         dig(argx, argy, level);
                     } else {
