@@ -190,8 +190,8 @@ function dig(argx,argy,level,from) {
 
         case 3:
             switch (true) {
-                case random < 0.1/generallvl:
-                    if (have['mysteryore'] >= 3 || from == 'drill') {
+                case random < 0.5/generallvl:
+                    if (have['mysteryore'] >= 3 || from) {
                         dig(argx, argy, level);
                     } else {
                         generallvl += 0.5;
